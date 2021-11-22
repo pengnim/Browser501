@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script>
+document.write("------------var-----------");
+var v = 'var선언';
+console.log(v);
+var v = '재선언'; //가능
+console.log(v);
+document.write("------------let-----------");
+let t = 'let변수 선언';
+console.log(t);
+t='let변수 재할당';
+//불가능 : let t = 'let 변수 재 선언';
+//console.log(t);
+document.write("------------const-----------");
+const c = 'const선언';
+console.log(c);
+// 불가능 : c='jkjkj?';
+</script>
+</body>
+</html>
