@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	1. 당신의 영문자 이름은?
+	<br>
+	<script>
+		var strForm = /[a-z]/i;
+		var str = prompt("이름을 입력해주세요");
+		while (true) {
+			var result = strForm.test(str);
+			if (result)
+				break;
+			else
+				str = prompt("이름을 입력해주세요");
+		}
+		document.write(str.toUpperCase() + "<br>");
+		//document.write(str.toLowerCase()+"<br>");
+
+		var phoneForm = /010-[0-9]{4}-[0-9]{4}/;
+		var phone = prompt("010-1234-5678 형식으로 입력해주세요");
+		while (true) {
+			var result = phoneForm.test(phone);
+			if (result)
+				break;
+			else
+				phone = prompt("010-1234-5678 형식으로 입력해주세요");
+		}
+		document.write("2. 당신의 연락처는? <br>");
+		document.write(phone.replace(phone.substr(9, 4), "****"));
+	</script>
+</body>
+</html>

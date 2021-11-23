@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>수학객체</title>
+</head>
+<body>
+	<script>
+		var answer = prompt("가위, 바위, 보 중 선택하세요");
+		var computer = parseInt(Math.random() * 3);
+		//document.write(computer);
+		var rsp2 = [ "가위", "바위", "보" ];
+		var rsp = [ '<img src="../img/scissors.jpg">',
+				'<img src="../img/rock.jpg">', '<img src="../img/paper.jpg">' ];
+		document.write(rsp[computer]);
+		if (answer == rsp2[computer]) {
+			alert("맞았습니다");
+		} else
+			alert("틀렸습니다");
+	</script>
+</body>
+</html>
