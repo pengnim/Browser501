@@ -108,7 +108,6 @@ p {
 		var j = 1;
 		while (true) {
 			
-			//마지막줄 공백 출력
 			if (j <= lastDate) {
 				//현재 날짜와 같다면 빨간색, 시간 출력
 				if (j == currDate) {
@@ -123,7 +122,8 @@ p {
 			}
 			
 			i++; //요일 증가
-
+			
+			//마지막줄 공백 다 채우면 break;
 			if (j >=lastDate && i==7)
 				break;
 			
