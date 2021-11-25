@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function chColor(obj, state) {
+			var myColor;
+			if (state == "over") {
+				myColor = "red";
+			} else {
+				myColor = "black";
+			}
+			obj.style.color = myColor;
+			document.getElementById("button").innerHTML = "마우스 " + state;
+		}
+	</script>
+
+	<button id="button" onmouseover='chColor(this,"over")'
+		onmouseout='chColor(this,"out")' style="width: 100px">마우스 out</button>
+</body>
+</html>

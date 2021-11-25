@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	function submit_chk(myForm) {
+		var namechk = /^[가-힇]{2,5}$/;
+		var phonechk = /^(010|019|011)\d{3,4}\d{4}$/;
+
+		var name = myForm.user_name;
+		var tel = myForm.phone;
+		var res1 = namechk.test(name.value);
+		var res2 = phonechk.test(tel.value);
+
+		if (!res1) {
+			alert("check name");
+			name.value = "";
+			name.focus();
+			return false;
+		}
+
+		if (!res2) {
+			alert("check tel");
+			tel.value = "";
+			tel.focus();
+			return false;
+		}
+	}
+
+	function reset_chk(myForm) {
+		var result = confirm("정말로 회원가입을 취소하시겠습니까?");
+		if (result) {
+			return false;
+		} else
+			return true;
+	}
+</script>
+</head>
+<body onload="document.f1.user_name.focus();">
+	<form action="#" method="post" name="f1"
+		onsubmit="return submit_chk(this)" onreset="return reset_chk(this)">
+		<fieldset>
+			<legend>회원가입 </legend>
+			<p>
+				<label for="user_name" id="user_name">이름</label> <input type="text"
+					name="user_name" id="user_name" />
+			</p>
+			<p>
+				<label for="phone" id="phone">연락처</label> <input type="tel"
+					name="phone" id="phone" />
+			</p>
+			<input type="submit" value="회원가입"> <input type="reset"
+				value="가입취소">
+		</fieldset>
+
+
+
+	</form>
+</body>
+</html>

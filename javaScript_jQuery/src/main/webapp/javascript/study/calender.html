@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>달력 출력하기</title>
+<style>
+table {
+	padding: 4px;
+	border: 1px solid #003399;
+}
+
+tr, td {
+	border: 1px;
+}
+
+td {
+	width: 60px;
+	height: 60px;
+	text-align: right;
+	background-color: #FAE0D4;
+}
+
+#tit {
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+	color: #003399;
+	background-color: #EEEEEE;
+}
+
+.week {
+	text-align: center;
+	color: #003399;
+	background-color: #FFD9EC;
+}
+
+p {
+	font-size: 15px;
+	color: purple;
+	text-align: center;
+}
+</style>
+<SCRIPT>
+	
+	//현재 날짜 정보
+	var now = new Date();
+	var currDate = now.getDate(); //현재 날짜
+
+	function get_Time() {
+		var hour = now.getHours();
+		var minute = now.getMinutes();
+		var ampm;
+		now = null;
+		if (hour >= 12) {
+			hour -= 12;
+			ampm = "오후";
+		} else
+			ampm = "오전";
+
+		hour = (hour == 0) ? 12 : hour;
+
+		if (minute < 10)
+			minute = "0" + minute;
+		return ampm + "<br>" + hour + ":" + minute;
+	}
+
+	function get_Day(year, month) {
+		var Last_Mon = new Array(31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+		var Mon2;
+
+		if (year % 4 == 0)
+			Mon2 = true;
+		else
+			Mon2 = false;
+
+		Last_Mon[1] = (Mon2) ? 29 : 28;
+
+		return Last_Mon[month - 1];
+	}
+
+	function drawCal(year, month) {
+
+		var lastDate = get_Day(year, month);
+		var tmp = new Date(year, (month - 1), 1);
+		var firstDay = tmp.getDay();
+		var time = get_Time();
+		var week = new Array("일", "월", "화", "수", "목", "금", "토");
+
+		//20XX년X월 출력
+		text = '<table><tr><td colspan=7 id="tit">' + year + "년" + month
+				+ "월</td></tr><tr>";
+
+		//요일칸 출력
+		for (var i = 0; i < 7; i++) {
+			text += '<td class="week">' + week[i] + "</td>";
+		}
+		text += "</tr><tr>";
+		
+		
+		//달력 첫줄 공백 출력
+		var i = 0;
+		for (i = 0; i < firstDay; i++) {
+			text += "<td></td>";
+		}
+
+		
+		//달력 날짜들 출력
+		var j = 1;
+		while (true) {
+			//마지막줄 공백 출력
+			if (j > lastDate) {
+				text += "<td>" + " " + "</td>";
+			} 
+			else {
+				//현재 날짜와 같다면 빨간색, 시간 출력
+				if (j == currDate) {
+					text += '<td style="color:red" ALIGN=right VALIGN=top>' + j
+							+ "<br><p>" + time + "</p></td>";
+				} else
+					text += '<td ALIGN=right VALIGN=top>' + j + "</td>";
+			}
+			
+			i++;
+			
+			if (j >=lastDate && i==7)
+				break;
+			
+			//일주일 채우면 줄바꾸기
+			if (i == 7) {
+				text += "</tr><tr>";
+				i = 0;
+			}
+			j++;
+		}
+		text += "</tr></table>";
+		document.write(text);
+	}
+	
+	//연도, 월 정규식
+	var yearchk = /\d{4}/;
+	var monthchk = /[0-9]{1,2}/;
+	var year = prompt("연도 입력");
+	var month = prompt("월 입력");
+	
+	//정규식을 만족하지 않으면 계속 입력시도
+	while (true) {
+		if (yearchk.test(year) && monthchk.test(month)) {
+			if(0 < month && 13 > month){
+				break;
+			}
+		}
+		alert("다시 입력해주세요");
+		year = prompt("연도 입력");
+		month = prompt("월 입력");
+		
+	}
+	
+	//달력 출력
+	drawCal(year, month);
+</SCRIPT>
+</head>
+<body>
+</body>
+</html>
+
+
+
