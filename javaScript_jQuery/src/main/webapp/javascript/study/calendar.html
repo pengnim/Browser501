@@ -107,21 +107,23 @@ p {
 		//달력 날짜들 출력
 		var j = 1;
 		while (true) {
+			
 			//마지막줄 공백 출력
-			if (j > lastDate) {
-				text += "<td>" + " " + "</td>";
-			} 
-			else {
+			if (j <= lastDate) {
 				//현재 날짜와 같다면 빨간색, 시간 출력
 				if (j == currDate) {
 					text += '<td style="color:red" ALIGN=right VALIGN=top>' + j
 							+ "<br><p>" + time + "</p></td>";
 				} else
 					text += '<td ALIGN=right VALIGN=top>' + j + "</td>";
+			} 
+			//마지막줄 공백 출력
+			else {
+				text += "<td>" + " " + "</td>";
 			}
 			
-			i++;
-			
+			i++; //요일 증가
+
 			if (j >=lastDate && i==7)
 				break;
 			
@@ -130,7 +132,8 @@ p {
 				text += "</tr><tr>";
 				i = 0;
 			}
-			j++;
+			
+			j++; //날짜증가
 		}
 		text += "</tr></table>";
 		document.write(text);
