@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+td{
+	border : 1px solid black;
+	text-align:center;
+	}
+</style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+//xml <tag str=""> 일 경우 attr("str"), <tag> 일 경우 find(tag).text()
+	$(function() {
+			$.get("source/item.xml", function(data, status) {
+				$("table").append("<tr><td>id</td><td>name</td><td>price</td><td>description</td></tr>");
+				$(data).find("item").each(function(){
+					$("table").append("<tr><td>" + $(this).attr("id")+ "</td><td>"+ $(this).attr("name") + "</td><td>"
+							+ $(this).find("price").text() + "</td><td>"+ $(this).find("description").text() + "</td></tr>");
+				});				
+				
+			});
+	});
+</script>
+</head>
+<body>
+<table>
+
+</table>
+</body>
+</html>
