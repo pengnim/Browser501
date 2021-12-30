@@ -1,6 +1,6 @@
 <html>
   <body>
-    <h2>😎아래 내용들을 공부했어요</h2>
+    <h2>😎 HTML/CSS, javascript, jquery, ajax를 공부합니다</h2>
     <ul>
       <li>2021-11-17 html기본 문법, 태그들 공부</li>
       <li>2021-11-18 form태그, layout연습</li>
